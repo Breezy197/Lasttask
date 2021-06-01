@@ -1,0 +1,33 @@
+image: python:3.7
+
+stages:
+ - test
+ - compile
+ - package
+
+before_script:
+ - apt install bash
+ - pthon -m pip install pytest
+
+test:
+  stage: test
+  script:
+   - cat script
+   - bash script
+
+compile:
+ stage: compile
+ script:
+   - python calc.py 10 cm km > result.txt
+  artifacts:
+   paths:
+    - result.txt
+
+package:
+ stage: package
+ script:
+  - ls
+  - gzip -k result.txt
+ artifacts:
+   paths:
+    - result.txt.gz
