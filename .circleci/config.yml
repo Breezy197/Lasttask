@@ -19,9 +19,9 @@ compile:
  stage: compile
  script:
    - python calc.py 10 cm km > result.txt
-  artifacts:
-   paths:
-    - result.txt
+ artifacts:
+  paths:
+   - result.txt
 
 package:
  stage: package
